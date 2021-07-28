@@ -174,7 +174,7 @@ def enter_key(request, origin):
                 username = returning_user
                 return select_challenge_page(request, origin_type, origin_name, two_pages_back, username)
             else:
-                latest_submission_snapshot = SubmissionSnaphshot.objects.filter(user__char_name__exact=returning_user).filter(challenge_tag__tag__exact="H_Index")
+                latest_submission_snapshot = SubmissionSnapshot.objects.filter(user__char_name__exact=returning_user).filter(challenge_tag__tag__exact="H_Index")
 
             if len(latest_submission_snapshot) != 0:
                origin_type = challenge
