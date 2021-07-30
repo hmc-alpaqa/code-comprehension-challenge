@@ -16,10 +16,6 @@ class User(models.Model):
         """of type Model"""
         return f"{self.char_name}"
 
-    def get_absolute_url(self):
-        """Returns the url to access a record for this user"""
-        return reverse('user-detail', args=[str(self.id)])
-
 class Submission(models.Model):
     """Model representing a submission incorporating multiple"""
     """factor submissions"""
@@ -37,11 +33,7 @@ class Submission(models.Model):
     def __str__(self):
         """String for representing the Submission object"""
         """ of type Model"""
-        return f"({self.user}|{self.which_submission}|{str(self.id)[:5:]})"
-
-    def get_absolute_url(self):
-        """Returns the url to access a record for this submission"""
-        return reverse('submission-detail', args=[str(self.id)])
+        return f"{self.user}|{self.which_submission}"
 
 class FactorSubmission(models.Model):
     """Model representing a submission for a specific"""
@@ -68,7 +60,7 @@ class FactorSubmission(models.Model):
     def __str__(self):
         """String for representing the FactorSubmission object"""
         """ of type Model"""
-        return f"({self.challenge_tag}|{self.factor_tag}|{str(self.id)[:5:]})"
+        return f"{self.challenge_tag}|{self.factor_tag}"
 
 class SubmissionSnapshot(models.Model):
     """Model representing a snapshot of a user's input"""
