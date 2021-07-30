@@ -6,8 +6,6 @@ from django.urls import reverse
 class User(models.Model):
     """Model representing a user with potentially multiple"""
     """submissions"""
-
-    experience_level = models.CharField(max_length=100)
     
     char_name = models.CharField(max_length=20, null=True)
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
