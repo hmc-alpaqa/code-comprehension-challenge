@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-import uuid
+#import uuid
 
 class User(models.Model):
     """Model representing a user with potentially multiple"""
@@ -10,8 +10,8 @@ class User(models.Model):
     experience_level = models.CharField(max_length=100)
     
     char_name = models.CharField(max_length=20, null=True)
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text='Unique ID for this user')
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+    #                      help_text='Unique ID for this user')
 
     def __str__(self):
         """String for representing the User object"""
@@ -28,8 +28,8 @@ class Submission(models.Model):
 
     verbose_name = "Submission"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text='Unique ID for this submission')
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+    #                      help_text='Unique ID for this submission')
 
     which_submission = models.IntegerField()
 
@@ -51,8 +51,8 @@ class FactorSubmission(models.Model):
 
     verbose_name = "Factor Submission"
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text='Unique ID for this submission')
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+    #                      help_text='Unique ID for this submission')
 
     submission = models.ForeignKey('Submission', on_delete=models.RESTRICT,
                                    null=True)
