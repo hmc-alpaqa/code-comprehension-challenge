@@ -46,7 +46,8 @@ class FactorSubmission(models.Model):
 
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
     #                      help_text='Unique ID for this submission')
-    identifier = models.CharField(primary_key=True, max_length=30)
+    
+    identifier = models.AutoField(primary_key=True)
 
     submission = models.ForeignKey('Submission', on_delete=models.RESTRICT,
                                    null=True)
@@ -68,8 +69,7 @@ class FactorSubmission(models.Model):
 
 class SubmissionSnapshot(models.Model):
     """Model representing a snapshot of a user's input"""
-
-    identifier = models.CharField(primary_key=True, max_length=30)
+    identifier = models.AutoField(primary_key=True)
 
     user = models.ForeignKey('User', on_delete=models.RESTRICT,
                              null=True)
@@ -91,10 +91,9 @@ class SubmissionSnapshot(models.Model):
 class ChallengeTag(models.Model):
     """Model representing an identifier for a challenge"""
 
+    identifier = models.AutoField(primary_key=True)
     
-    
-    tag = models.CharField(primary_key=True,
-                           max_length=20,
+    tag = models.CharField(max_length=20,
                            verbose_name="Challenge Tag")
 
     def __str__(self):
@@ -107,8 +106,10 @@ class FactorTag(models.Model):
     """ a challenge"""
 
     verbose_name = "Factor Tag"
-    tag = models.CharField(primary_key=True,
-                           max_length=20, verbose_name="Factor Tag")
+
+    identifier = models.AutoField(primary_key=True)
+    
+    tag = models.CharField(max_length=20, verbose_name="Factor Tag")
 
     challenge_tag = models.ForeignKey('ChallengeTag',
                                       on_delete=models.RESTRICT,
@@ -122,7 +123,7 @@ class FinalQuestions(models.Model):
     """Model representing responses to the final questions"""
     """ that follow the challenge"""
 
-    identifier = models.CharField(primary_key=True, max_length=50)
+    identifier = models.AutoField(primary_key=True)
     
     verbose_name = "Final Questions"
 
