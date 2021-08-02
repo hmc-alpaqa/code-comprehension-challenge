@@ -90,9 +90,8 @@ def submit_challenge1(request, origin_type, origin_name, two_pages_back, usernam
     factor_tag_name = f"Factor_{factor}"
     factor_tag = FactorTag.objects.filter(challenge_tag__exact=challenge_tag).filter(tag__exact=factor_tag_name)[0]
 
-    random.seed()
-    identifier = str(random.randint(0, 100000000000))
-    factor_submission = FactorSubmission(identifier=identifier, submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses, response2="none")
+    
+    factor_submission = FactorSubmission(submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses, response2="none")
     factor_submission.save()
     
     return HttpResponse()
@@ -111,9 +110,7 @@ def submit_challenge2(request, origin_type, origin_name, two_pages_back, usernam
     factor_tag_name = f"Factor_{factor}"
     factor_tag = FactorTag.objects.filter(challenge_tag__exact=challenge_tag).filter(tag__exact=factor_tag_name)[0]
 
-    random.seed()
-    identifier = str(random.randint(0, 100000000000))
-    factor_submission = FactorSubmission(identifier=identifier, submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses1, response2=responses2)
+    factor_submission = FactorSubmission(submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses1, response2=responses2)
     factor_submission.save()
 
     return HttpResponse()
@@ -131,9 +128,7 @@ def submit_challenge3(request, origin_type, origin_name, two_pages_back, usernam
     factor_tag_name = f"Factor_{factor}"
     factor_tag = FactorTag.objects.filter(challenge_tag__exact=challenge_tag).filter(tag__exact=factor_tag_name)[0]
 
-    random.seed()
-    identifier = str(random.randint(0, 100000000000))
-    factor_submission = FactorSubmission(identifier=identifier, submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses, response2="none")
+    factor_submission = FactorSubmission(submission=submission, challenge_tag=challenge_tag, factor_tag=factor_tag, time=time, response1=responses, response2="none")
     factor_submission.save()
 
     return HttpResponse()
@@ -239,10 +234,7 @@ def take_snapshot(request, origin_type, origin_name, two_pages_back, username):
     
     
     if user:
-        random.seed()
-        identifier = str(random.randint(0, 100000000000))
-        snapshot_obj = SubmissionSnapshot(identifier=identifier,
-                                          challenge_tag=challenge_tag,
+        snapshot_obj = SubmissionSnapshot(challenge_tag=challenge_tag,
                                           user=user,
                                           input_snapshot=input_snapshot,
                                           time=time,
