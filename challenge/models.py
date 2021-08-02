@@ -7,7 +7,7 @@ class User(models.Model):
     """Model representing a user with potentially multiple"""
     """submissions"""
 
-    identifier = models.CharField(primary_key=True, max_length=50)
+    identifier = models.AutoField(primary_key=True)
     
     char_name = models.CharField(max_length=20)
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -27,7 +27,7 @@ class Submission(models.Model):
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
     #                      help_text='Unique ID for this submission')
 
-    identifier = models.CharField(primary_key=True, max_length=50)
+    identifier = models.AutoField(primary_key=True)
     
     which_submission = models.IntegerField()
 
