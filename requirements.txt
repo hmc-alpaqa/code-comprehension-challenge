@@ -6,3 +6,4 @@ parse==1.19.0
 random-username==1.0.2
 sympy==1.8
 whitenoise==5.3.0
+django-heroku==0.3.1
