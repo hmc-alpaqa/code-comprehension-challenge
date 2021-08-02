@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,12 +87,8 @@ WSGI_APPLICATION = 'evaluate_tests.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'my_db',
-        'USER' : 'hero',
-        'PASSWORD' : 'my_db@123',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
     }
 }
 
@@ -150,3 +147,6 @@ DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+django_heroku.settings(locals())
