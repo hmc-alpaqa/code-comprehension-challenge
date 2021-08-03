@@ -140,7 +140,7 @@ def create_key(request, origin):
     if origin == "create_key":
         attempted_user = request.GET['username']
 
-    taken = [user.char_name for user in User.objects.all()]
+    taken = []#[user.char_name for user in User.objects.all()]
     suggested_user = valid_username(taken)
 
     if attempted_user:
@@ -161,7 +161,7 @@ def enter_key(request, origin):
         returning_user = request.GET['username']
 
     if returning_user:
-        taken = [user.char_name for user in User.objects.all()]
+        taken = []#[user.char_name for user in User.objects.all()]
         if returning_user in taken:
             latest_submission_snapshot = SubmissionSnapshot.objects.filter(user__char_name__exact=returning_user).filter(challenge_tag__tag__exact="Contains_Loop")
             if len(latest_submission_snapshot) != 0:
