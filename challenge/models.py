@@ -8,6 +8,8 @@ class User(models.Model):
     """submissions"""
 
     #identifier = models.AutoField(primary_key=True)
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     
     char_name = models.CharField(max_length=20)
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -23,6 +25,8 @@ class Submission(models.Model):
     """factor submissions"""
 
     verbose_name = "Submission"
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
     #                      help_text='Unique ID for this submission')
@@ -42,6 +46,8 @@ class FactorSubmission(models.Model):
     """Model representing a submission for a specific"""
     """factor of a specific challenge"""
 
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    
     verbose_name = "Factor Submission"
 
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -71,6 +77,8 @@ class SubmissionSnapshot(models.Model):
     """Model representing a snapshot of a user's input"""
     #identifier = models.AutoField(primary_key=True)
 
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+
     user = models.ForeignKey('User', on_delete=models.RESTRICT,
                              null=True)
     challenge_tag = models.ForeignKey('ChallengeTag',
@@ -92,6 +100,8 @@ class ChallengeTag(models.Model):
     """Model representing an identifier for a challenge"""
 
     #identifier = models.AutoField(primary_key=True)
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     
     tag = models.CharField(max_length=20,
                            verbose_name="Challenge Tag")
@@ -106,6 +116,8 @@ class FactorTag(models.Model):
     """ a challenge"""
 
     verbose_name = "Factor Tag"
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
     #identifier = models.AutoField(primary_key=True)
     
@@ -124,6 +136,8 @@ class FinalQuestions(models.Model):
     """ that follow the challenge"""
 
     #identifier = models.AutoField(primary_key=True)
+
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     
     verbose_name = "Final Questions"
 
