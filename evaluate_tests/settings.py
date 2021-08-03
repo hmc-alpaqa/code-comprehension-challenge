@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'evaluate_tests.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', #or sqlite3
         'NAME': 'my_db',
+        'USER': 'hero'
+        'PASSWORD': 'my_db@123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
