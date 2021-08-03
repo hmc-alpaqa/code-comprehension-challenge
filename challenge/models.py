@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-#import uuid
+import uuid
 
 class User(models.Model):
     """Model representing a user with potentially multiple"""
