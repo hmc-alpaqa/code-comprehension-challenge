@@ -145,7 +145,7 @@ def create_key(request, origin):
 
     if attempted_user:
         if attempted_user not in taken:
-            created_user = User(char_name=attempted_user, id=str(uuid.uuid4()))
+            created_user = User(char_name=attempted_user, id=uuid.uuid4())
             created_user.save()
             return select_challenge_page(request, "no type",
                                          "create_key.html",
